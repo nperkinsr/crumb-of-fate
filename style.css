@@ -1,0 +1,97 @@
+/* =========================
+   Root Variables & Resets
+   ========================= */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --color1: #d6ab69;
+  --color2: #eff3f9;
+  --color4: #eb9d0b;
+  --color3: #7b5b35;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  color: var(--color4);
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: var(--white);
+  background-color: var(--color4);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin: auto;
+}
+
+p {
+  color: var(--black);
+  font-size: 1.3rem;
+  margin: 1.5rem;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  background-image: radial-gradient(#936a38 3.5px, transparent 3.5px),
+    radial-gradient(#936a38 3.5px, transparent 3.5px);
+  background-size: 30px 30px;
+  background-position: 0 0, 16px 16px;
+  background-color: #9c794e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 7px 7px 4px var(--color3);
+  border: 2px solid var(--color3);
+  margin: 20px;
+  max-width: 500px;
+}
+
+img {
+  width: 50%;
+}
+
+#lucky-numbers {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading-text {
+  opacity: 0;
+}
+
+.warning-text {
+  opacity: 0;
+}
+
+.warning-text.fade-in {
+  animation: fadeIn 2s forwards;
+}
