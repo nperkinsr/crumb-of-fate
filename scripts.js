@@ -16,8 +16,9 @@ function loadpredictions() {
       predictions = data.predictions || [];
       // Initialize prediction element reference after data is loaded
       prediction = document.getElementById("fortune-prediction");
+      // Show the prediction after 1s; lucky numbers will be shown 1s after the
+      // prediction (chained inside showPrediction) so they appear at t=2s.
       setTimeout(showPrediction, 1000);
-      setTimeout(showLuckyNumbers, 1000); // Also show lucky numbers
     })
     .catch((error) => {
       console.error("Failed to load predictions:", error);
@@ -59,6 +60,8 @@ function showPrediction() {
     if (warningText) {
       warningText.classList.add("fade-in");
     }
+    // Show lucky numbers 1 (?) second after the prediction appears
+    setTimeout(showLuckyNumbers, 1000);
   }, 0);
 }
 

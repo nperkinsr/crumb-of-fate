@@ -29,8 +29,13 @@ h3 {
   color: var(--white);
   background-color: var(--color4);
   padding: 0.8rem;
-  border-radius: 8px;
   margin: auto;
+}
+
+.lucky-numbers-area {
+  border-radius: 8px;
+  border: 5px solid var(--color4);
+  box-sizing: border-box;
 }
 
 p {
@@ -73,6 +78,8 @@ img {
 #lucky-numbers {
   font-weight: 500;
   font-size: 1.5rem;
+  padding: 0;
+  margin: 0.8rem;
 }
 
 @keyframes fadeIn {
@@ -94,4 +101,20 @@ img {
 
 .warning-text.fade-in {
   animation: fadeIn 2s forwards;
+}
+
+/* Lucky numbers should fade in like the prediction */
+.lucky-number-text {
+  opacity: 0;
+}
+
+.lucky-number-text.fade-in {
+  animation: fadeIn 2s forwards;
+}
+
+#fortune-prediction {
+  min-height: 2.5em;
+  line-height: 1.2em;
+  display: flex;
+  align-items: center;
 }
