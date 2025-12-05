@@ -104,7 +104,6 @@ img {
   animation: fadeIn 1s forwards;
 }
 
-/* Lucky numbers should fade in like the prediction */
 .lucky-number-text {
   opacity: 0;
 }
