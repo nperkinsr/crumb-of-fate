@@ -4,10 +4,7 @@
 :root {
   --black: #000000;
   --white: #ffffff;
-  --color1: #d6ab69;
-  --color2: #eff3f9;
-  --color4: #c26b24;
-  --color3: #c57d24;
+  --color1: #f8863f;
 }
 
 * {
@@ -15,7 +12,7 @@
 }
 
 h1 {
-  color: var(--color4);
+  color: var(--color1);
   font-size: 2rem;
   font-weight: 700;
   font-family: "Caveat", cursive;
@@ -27,7 +24,7 @@ h1 {
 
 h3 {
   color: var(--white);
-  background-color: var(--color4);
+  background-color: var(--color1);
   padding: 0.8rem;
   margin: auto;
   font-size: 1rem;
@@ -35,7 +32,7 @@ h3 {
 
 .lucky-numbers-area {
   border-radius: 6px;
-  border: 3px solid var(--color4);
+  border: 3px solid var(--color1);
   box-sizing: border-box;
 }
 
@@ -47,13 +44,19 @@ p {
 
 html,
 body {
-  height: 100vh;
+  height: calc(100vh + 50px);
   margin: 0;
   padding: 0;
   font-family: "Quicksand", sans-serif;
-  background-image: url("./assets/seamless_pattern_brown.png");
+  background-image: url("./assets/seamless_pattern_black.png");
   background-size: 150px 150px;
+  background-repeat: repeat;
+  background-position: top left;
   overflow: hidden;
+}
+
+.page-wrapper {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,14 +67,13 @@ body {
   background-color: var(--white);
   padding: 20px;
   border-radius: 10px;
-  /* box-shadow: 7px 7px 4px var(--color3);
-  border: 2px solid var(--color3); */
   margin: 20px;
   max-width: 500px;
 }
 
 img {
-  width: 50%;
+  width: 40%;
+  margin: 1rem;
 }
 
 #lucky-numbers {
@@ -116,4 +118,16 @@ img {
   line-height: 1.2em;
   display: flex;
   align-items: center;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 450px) {
+  .page-wrapper {
+    align-items: flex-start;
+  }
+
+  .container {
+    margin-top: 17vh;
+  }
 }
