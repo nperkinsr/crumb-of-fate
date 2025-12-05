@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#9c794e" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#9c794e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 
   <title>Crumb of Fate</title>
 
@@ -19,7 +19,7 @@
 </head>
 
 <body>
-
+  <div class="page-wrapper">
   <div class="container">
 
     <header>
@@ -38,7 +38,15 @@
       </div>
     </main>
   </div>
+  </div>
 
+    <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.scrollTo(0, 50);
+      }, 50);
+    });
+  </script>
   <script src="./scripts.js"></script>
 </body>
 
