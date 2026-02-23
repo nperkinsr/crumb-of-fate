@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fce9da" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#fce9da" media="(prefers-color-scheme: dark)">
 
   <title>Crumb of Fate</title>
 
@@ -15,32 +15,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
   <link rel=" stylesheet" href="./style.css" />
 </head>
 
 <body>
   <div class="page-wrapper">
-  <div class="container">
+    <div class="container">
 
-    <header>
-      <img src="./assets/fortune.jpg" alt="A fortune cookie">
-      <h1>The Crumb of Fate</h1>
-    </header>
-    <main>
-      <p id="fortune-prediction">
-        <span class="loading-text">loading</span>
-      </p>
-     <div class="lucky-numbers-area">
-      <h3>Your lucky numbers:</h3>
-      <p id="lucky-numbers">
-        <span class="loading-text">loading</span>
-      </p>
-      </div>
-    </main>
-  </div>
+      <header>
+        <h1>THE CRUMB OF FATE</h1>
+        <h2>The cookie has spoken.</h2>
+      </header>
+
+      <main>
+
+        <div class="lines">
+          <hr>
+          <hr>
+        </div>
+
+        <!-- static-height area; spinner and results live here -->
+        <div class="results-wrapper">
+          <span class="spinner" id="spinner"></span>
+
+          <p id="fortune-prediction"></p>
+
+          <h3 id="lucky-heading">Your lucky numbers:</h3>
+          <p id="lucky-numbers"></p>
+        </div>
+
+        <div class="lines">
+          <hr>
+          <hr>
+        </div>
+        <h2>Carry this wisdom responsibly.</h2>
+      </main>
+      <footer>
+        <p>Do not question the pastry.</p>
+      </footer>
+    </div>
   </div>
 
-    <script>
+  <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
         window.scrollTo(0, 50);

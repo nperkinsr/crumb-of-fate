@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // start data load and show spinner immediately
   loadpredictions();
 });
 
 let prediction = null;
 let predictions = [];
+let spinnerEl = null;
+let luckyHeading = null;
+let luckyNumbersEl = null;
 
 /////////////////////////////////////////////////////
 //////////       DATA LOADING       /////////////
@@ -14,11 +18,17 @@ function loadpredictions() {
     .then((response) => response.json())
     .then((data) => {
       predictions = data.predictions || [];
-      // Initialize prediction element reference after data is loaded
+      // grab references needed for display logic
       prediction = document.getElementById("fortune-prediction");
-      // Show the prediction after 1s; lucky numbers will be shown 1s after the
-      // prediction (chained inside showPrediction) so they appear at t=2s.
-      setTimeout(showPrediction, 1000);
+      spinnerEl = document.getElementById("spinner");
+      luckyHeading = document.getElementById("lucky-heading");
+      luckyNumbersEl = document.getElementById("lucky-numbers");
+
+      // start with spinner only, everything else hidden in CSS
+      showSpinner();
+
+      // after one second swap out spinner for the results
+      setTimeout(showResults, 1000);
     })
     .catch((error) => {
       console.error("Failed to load predictions:", error);
@@ -43,25 +53,45 @@ function createRandomPrediction() {
 //////////       PREDICTION DISPLAY       /////////////
 /////////////////////////////////////////////////////
 
-function showPrediction() {
-  if (!prediction) {
-    console.warn(
-      "Missing #fortune-prediction element; aborting showPrediction"
-    );
+// display spinner and keep other sections hidden
+function showSpinner() {
+  if (spinnerEl) {
+    spinnerEl.style.display = "inline-block";
+  }
+  if (prediction) prediction.style.display = "none";
+  if (luckyHeading) luckyHeading.style.display = "none";
+  if (luckyNumbersEl) luckyNumbersEl.style.display = "none";
+}
+
+// after delay show both prediction and lucky numbers together
+function showResults() {
+  if (!prediction || !luckyNumbersEl) {
+    console.warn("Missing elements for results; aborting showResults");
     return;
   }
 
+  // hide spinner
+  if (spinnerEl) spinnerEl.style.display = "none";
+
+  // populate the prediction text
   const predictionText = createRandomPrediction();
   prediction.innerHTML = predictionText;
 
-  // Made sure DOM update has occurred
+  // generate and populate lucky numbers
+  const luckyNumbers = generateLuckyNumbers();
+  luckyNumbersEl.innerHTML = `<span class="lucky-number-text">${luckyNumbers.join(", ")}</span>`;
+
+  // make prediction and numbers/heading visible
+  prediction.style.display = "block";
+  if (luckyHeading) luckyHeading.style.display = "block";
+  luckyNumbersEl.style.display = "block";
+
+  // animate fade-in simultaneously
   setTimeout(() => {
     const warningText = prediction.querySelector(".warning-text");
-    if (warningText) {
-      warningText.classList.add("fade-in");
-    }
-    // Show lucky numbers 1 (?) second after the prediction appears
-    setTimeout(showLuckyNumbers, 1000);
+    if (warningText) warningText.classList.add("fade-in");
+    const luckyNumberText = luckyNumbersEl.querySelector(".lucky-number-text");
+    if (luckyNumberText) luckyNumberText.classList.add("fade-in");
   }, 0);
 }
 
@@ -73,28 +103,6 @@ function generateLuckyNumbers() {
     numbers.add(num);
   }
   return Array.from(numbers).sort((a, b) => a - b); // Welcome to my personal hell
-}
-
-function showLuckyNumbers() {
-  const luckyNumbersElement = document.getElementById("lucky-numbers");
-  if (!luckyNumbersElement) {
-    console.warn("Missing #lucky-numbers element; aborting showLuckyNumbers");
-    return;
-  }
-
-  const luckyNumbers = generateLuckyNumbers();
-  luckyNumbersElement.innerHTML = `<span class="lucky-number-text">${luckyNumbers.join(
-    ", "
-  )}</span>`;
-
-  // Use setTimeout to ensure DOM update has occurred
-  setTimeout(() => {
-    const luckyNumberText =
-      luckyNumbersElement.querySelector(".lucky-number-text");
-    if (luckyNumberText) {
-      luckyNumberText.classList.add("fade-in");
-    }
-  }, 0);
 }
 
 /////////////////////////////////////////////////////
