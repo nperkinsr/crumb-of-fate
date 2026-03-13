@@ -1,0 +1,18 @@
+{
+  "en": {
+    "heading": "THE CRUMB OF FATE",
+    "subheading": "The cookie has spoken.",
+    "luckyNumbersLabel": "Your lucky numbers:",
+    "closing": "Carry this wisdom responsibly.",
+    "footer": "Do not question the pastry.",
+    "predictionsFile": "predictions.json"
+  },
+  "es": {
+    "heading": "LA MIGA DEL DESTINO",
+    "subheading": "La galleta ha hablado.",
+    "luckyNumbersLabel": "Tus números de la suerte:",
+    "closing": "Lleva esta sabiduria con responsabilidad.",
+    "footer": "No cuestiones a la galleta.",
+    "predictionsFile": "predictions-es.json"
+  }
+}
